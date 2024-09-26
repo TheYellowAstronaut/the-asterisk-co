@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asterisk - Home</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden; /* Prevents scrollbars from appearing */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(51, 51, 51, 0.18);
+            padding: 15px 1px;
+            border-radius: 100px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+            backdrop-filter: blur(50px);
+        }
+
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-family: 'Consolas';
+            font-size: 20px;
+            margin: 0 10px;
+            border-radius: 100px;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(80, 80, 80, 0.24);
+            backdrop-filter: blur(20px);
+        }
+
+        .titletext {
+            color: rgba(255, 255, 255, 0.473);
+            font-family: 'Consolas';
+            font-size: 100px;
+            text-align: center;
+            z-index: 1001; 
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            filter: blur(20px);
+            z-index: 1;
+        }
+        .semi-transparent {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+            opacity: 0.50;
+        }
+        .content {
+            position: relative;
+            z-index: 1001;
+        }
+        .primarybutton {
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-family: 'Consolas';
+            font-size: 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .primarybutton:hover {
+            background-color: rgba(80, 80, 80, 0.54);
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-family: 'Consolas';
+            font-size: 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a href="notes.html">Asterisk Notes</a>
+        <a href="#terminal">Asterisk Terminal</a>
+        <a href="#help">Help</a>
+    </div>
+
+    <div class="content"><CENTER>
+        <table><tr><td class="card"><img src="https://lh6.googleusercontent.com/10s9oeh8VbXYBCxG440Vjpm3boZScBSQCZUOT2OTfQ7hMxSj8N3ChFuHaeACXjMBVSgBQomEKjy0cJD1QH8xM1WFg9ufXXfOLSWGUD8dnnYs4mjYlqIlhpYtwzkOSr6MvQ=w1280" class="img"><p></p><button class="primarybutton">Download</button></td></tr></table>
+    </div>
+
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function createCircle() {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            
+            const size = getRandomInt(150, 400); 
+            const color = `rgba(${getRandomInt(0, 255)}, ${getRandomInt(0, 255)}, ${getRandomInt(0, 255)}, 0.5)`;
+            const posX = getRandomInt(0, window.innerWidth - size);
+            const posY = getRandomInt(0, window.innerHeight - size);
+            const blur = getRandomInt(10, 30); 
+            
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            circle.style.backgroundColor = color;
+            circle.style.top = `${posY}px`;
+            circle.style.left = `${posX}px`;
+            circle.style.filter = `blur(${blur}px)`;
+
+            document.body.appendChild(circle);
+        }
+
+        for (let i = 0; i < 10; i++) { 
+            createCircle();
+        }
+    </script>
+</body>
+</html>
